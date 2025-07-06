@@ -42,29 +42,26 @@ ci-cd_demo/
 ├── pom.xml
 └── README.md
 
-yaml
-Copy
-Edit
 
 ---
 
 ## 🏗️ Setup Instructions
 
 ### 🔹 Phase 1: Java App Setup
+
+
 ```bash
 ./mvnw clean package
 🔹 Phase 2: Docker Setup
-bash
-Copy
-Edit
+
 docker build -t chaitu2005/demoapp:latest .
 docker login -u chaitu2005
 docker push chaitu2005/demoapp:latest
+
+
 🔹 Phase 3: Kubernetes Setup
 deployment.yaml
-yaml
-Copy
-Edit
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -84,10 +81,10 @@ spec:
         image: chaitu2005/demoapp:latest
         ports:
         - containerPort: 8080
-service.yaml
-yaml
-Copy
-Edit
+
+
+🔹 Phase 4:service.yaml
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -105,22 +102,16 @@ Copy
 Edit
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
+
 🌐 Access Application
-bash
-Copy
-Edit
 kubectl get nodes -o wide
 Use IP from the output like: 192.168.65.3
-Access app:
 
-bash
-Copy
-Edit
+
+Access app:
 http://192.168.65.3:30080/hello
+
 🧪 Jenkinsfile - Pipeline Stages
-groovy
-Copy
-Edit
 pipeline {
     agent any
     environment {
@@ -162,17 +153,21 @@ pipeline {
         }
     }
 }
+
+
 🧩 Pipeline Flow
-mathematica
-Copy
-Edit
+
 GitHub Push ➔ Jenkins ➔ Maven Build ➔ Docker Image ➔ Docker Hub ➔ Kubernetes Deployment ➔ Live API
+
+
 📌 GitHub Repository
+
 🔗 GitHub: https://github.com/Chaiudbbhd/ci-cd_demo
 
 📸 Project Architecture
 
 🔜 Coming Soon
+
 GitHub Webhook Integration
 
 Slack Notifications in Jenkinsfile

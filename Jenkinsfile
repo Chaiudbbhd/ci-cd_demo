@@ -16,9 +16,9 @@ pipeline {
         }
         stage('Docker Build & Push') {
             steps {
-                withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKERHUB_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-token', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh "docker build -t ${DOCKERHUB_USER}/demoapp:latest ."
-                    sh "echo ${DOCKERHUB_PASSWORD} | docker login -u ${DOCKERHUB_USER} --password-stdin"
+                    sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
                     sh "docker push ${DOCKERHUB_USER}/demoapp:latest"
                 }
             }

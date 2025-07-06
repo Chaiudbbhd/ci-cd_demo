@@ -33,9 +33,15 @@ pipeline {
     post {
         success {
             echo 'Deployment Successful'
+            mail to: 'your-email@example.com',
+                 subject: "✅ Build Successful: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                 body: "Good news! The build was successful.\nCheck it here: ${env.BUILD_URL}"
         }
         failure {
             echo 'Deployment Failed'
+            mail to: 'your-email@example.com',
+                 subject: "❌ Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                 body: "Uh oh! The build failed.\nCheck the logs here: ${env.BUILD_URL}"
         }
     }
 }

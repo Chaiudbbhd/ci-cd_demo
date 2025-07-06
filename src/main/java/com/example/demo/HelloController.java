@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Best cartoon is Doreamon";
+        return "Best cartoon is Doreamon and shin chan";
     }
 }

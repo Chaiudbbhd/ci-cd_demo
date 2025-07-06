@@ -4,6 +4,8 @@ pipeline {
     environment {
         DOCKERHUB_USER = 'chaitu2005'
         IMAGE_NAME = 'demoapp'
+        DEPLOYMENT_NAME = 'java-app-deployment'
+        CONTAINER_NAME = 'java-app'   // <-- corrected container name
     }
 
     stages {
@@ -31,7 +33,6 @@ pipeline {
                         sh "docker push ${fullImageName}"
                     }
 
-                    // Save the image name for the next stage
                     env.FULL_IMAGE = fullImageName
                 }
             }
@@ -40,7 +41,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh "kubectl set image deployment/java-app-deployment java-app-container=${env.FULL_IMAGE}"
+                    sh "kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=${env.FULL_IMAGE}"
                 }
             }
         }

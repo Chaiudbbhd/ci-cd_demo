@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_USER = 'your-dockerhub-username'
+        DOCKERHUB_USER = 'chaitu2005'
     }
     stages {
         stage('Clone Code') {
@@ -16,9 +16,11 @@ pipeline {
         }
         stage('Docker Build & Push') {
             steps {
-                sh "docker build -t ${DOCKERHUB_USER}/your-app-name:latest ."
-                sh "docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}"
-                sh "docker push ${DOCKERHUB_USER}/your-app-name:latest"
+                withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKERHUB_PASSWORD')]) {
+                    sh "docker build -t ${DOCKERHUB_USER}/demoapp:latest ."
+                    sh "echo ${DOCKERHUB_PASSWORD} | docker login -u ${DOCKERHUB_USER} --password-stdin"
+                    sh "docker push ${DOCKERHUB_USER}/demoapp:latest"
+                }
             }
         }
         stage('Deploy to K8s') {

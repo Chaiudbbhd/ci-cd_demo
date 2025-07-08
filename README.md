@@ -6,6 +6,7 @@
 </p>
 
 
+
 This project demonstrates a **fully automated CI/CD pipeline** to build, test, containerize, and deploy a **Java Spring Boot Application** using:
 
 ✅ Jenkins + Docker + Docker Hub + Kubernetes + GitHub

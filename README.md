@@ -56,18 +56,22 @@ ci-cd_demo/
 
 ### 🔹 Phase 1: Java App Setup
 
-
-```bash
 ./mvnw clean package
-🔹 Phase 2: Docker Setup
+
+
+🔹 Phase 2: 
+
+Docker Setup
 
 docker build -t chaitu2005/demoapp:latest .
 docker login -u chaitu2005
 docker push chaitu2005/demoapp:latest
 
 
+
 🔹 Phase 3: Kubernetes Setup
-deployment.yaml
+
+deployment.yaml(filename)
 
 apiVersion: apps/v1
 kind: Deployment
@@ -90,7 +94,10 @@ spec:
         - containerPort: 8080
 
 
-🔹 Phase 4:service.yaml
+
+🔹 Phase 4:
+
+service.yaml(file name)
 
 apiVersion: v1
 kind: Service
@@ -104,19 +111,26 @@ spec:
     nodePort: 30080
   selector:
     app: java-app
-bash
-Copy
-Edit
+
+
+
+# commands
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
+
+
 
 🌐 Access Application
 kubectl get nodes -o wide
 Use IP from the output like: 192.168.65.3
 
 
+
+
 Access app:
 http://192.168.65.3:30080/hello
+
+
 
 🧪 Jenkinsfile - Pipeline Stages
 pipeline {
@@ -164,6 +178,7 @@ pipeline {
 
 🧩 Pipeline Flow
 
+
 GitHub Push ➔ Jenkins ➔ Maven Build ➔ Docker Image ➔ Docker Hub ➔ Kubernetes Deployment ➔ Live API
 
 
@@ -184,10 +199,8 @@ Kubernetes monitoring with Prometheus + Grafana
 Auto-scaling and load balancing
 
 🙌 Let's Connect
+
 If you're interested in DevOps or cloud deployment and want to learn together, feel free to connect with me on LinkedIn.
 
 #DevOps #Java #SpringBoot #Docker #Kubernetes #Jenkins #CI_CD #CloudComputing #Automation
 
-yaml
-Copy
-Edit

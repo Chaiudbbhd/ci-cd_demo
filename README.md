@@ -1,5 +1,11 @@
 # 🚀 DevOps Automation: CI/CD Pipeline for Java Spring Boot App
 
+
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*sHJOQalCY1VQeBg-CbF68w.gif" alt="Devops" width="500"/>
+</p>
+
+
 This project demonstrates a **fully automated CI/CD pipeline** to build, test, containerize, and deploy a **Java Spring Boot Application** using:
 
 ✅ Jenkins + Docker + Docker Hub + Kubernetes + GitHub

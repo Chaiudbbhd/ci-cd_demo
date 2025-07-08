@@ -183,10 +183,9 @@ Kubernetes monitoring with Prometheus + Grafana
 Auto-scaling and load balancing
 
 🙌 Let's Connect
+
 If you're interested in DevOps or cloud deployment and want to learn together, feel free to connect with me on LinkedIn.
 
 #DevOps #Java #SpringBoot #Docker #Kubernetes #Jenkins #CI_CD #CloudComputing #Automation
 
-yaml
-Copy
-Edit
+
